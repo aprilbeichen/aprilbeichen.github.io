@@ -135,7 +135,7 @@ window.onload=function() {
 		oBody.onresize=function(){
 			fangsuo(oBody,oHtml);
 		}
-		document.getElementById('tishi').innerHTML='<p>（ <span>bless you today ！</span> </p>';
+		document.getElementById('tishi').innerHTML='<p><span>bless you today ！</span> </p>';
 		setTimeout(function(){
 			document.getElementById('tishi').style.cssText="display:none;";
 		},5000);
