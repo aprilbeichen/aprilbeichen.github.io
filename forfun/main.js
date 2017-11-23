@@ -142,7 +142,7 @@ window.onload=function() {
 	}
 	else{
 		oHtml.setAttribute("class", "mmm"); 
-		document.getElementById('tishi').innerHTML='<p><span>bless you today ！</span></p><p><span>移动端正在开发中，pc更精彩！</span></p><p>www.fine.today</p>'
+		document.getElementById('tishi').innerHTML='<p><span>bless you today ！</span></p><p><span>移动端正在开发中，pc更精彩！</span></p><p>www.bless.today</p>'
 		setTimeout(function(){
 			document.getElementById('tishi').style.cssText="display:none;";
 		},10000);
