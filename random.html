@@ -42,21 +42,13 @@ li{
 	line-height: 70px
 }
 li.bbb{
-	background-color: rgb(77, 168, 238)
+	background-color:rgb(77, 168, 238);
 }
-
-/*
-a{
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	font-size: 10px;
-	z-index: 100;
-	color: blue;
-	text-decoration: none;
+li.ccc{
+	background-color: #2d7f8c;
 
 }
-*/
+
 
 #toubu{
 	z-index: 100;
@@ -153,12 +145,15 @@ window.onload=function  () {
 		// 	lis[i].classList.remove("aaa")
 		// }
 		var lis = getByClass(oul,"aaa")
-		// var lis =[]
-		// for (var i = 0; i < lis0.length; i++) {
-		// 	lis0[i].classList.remove("aaa")
-		// }
+		var lis0 = getByClass(oul,"bbb")
+
+		for (var i = 0; i < lis0.length; i++) {
+			lis0[i].classList.remove("bbb")
+			lis0[i].className = 'ccc'; 
+		}
 		var count = Number(orenshu.value);
 		var arr = [];
+		alert("选到的小朋友们要加油哟～")
 		for (var i = 0; i < count; i++) {
 			var flag = false;
 			var index = parseInt(Math.random() * Number(lis.length));
@@ -176,7 +171,7 @@ window.onload=function  () {
 			lis[index].classList.remove("aaa")
 			lis[index].className = 'bbb'; 
 		}
-		alert("选到的小朋友们要加油哟～")
+		
 	}
 }
 </script>
