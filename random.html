@@ -12,15 +12,18 @@
 body{
 	position: relative;
 	background: #333;
-	font-size: 30px;
+	font-size: 25px;
 	color: #fff;
 }
-ul,li{
+ul,li,select{
 	list-style: none;
 }
-input{
-    outline: none;
-}
+
+input,select{    
+    background:none;    
+    outline:none;    
+    border:0px;  
+}  
 ul{
 	padding-top: 60px;
 	margin-bottom: 50px;
@@ -29,18 +32,19 @@ li{
 	position: relative;
 	display: inline-block;
 	width: 10%;
-	height: 100px;
+	height: 70px;
 	background-color: indianred;
 	border-radius: 10px;
 	
 	margin: 10px;
 	text-align: center;
 	
-	line-height: 100px
+	line-height: 70px
 }
-li.aaa{
-	background-color: blue
+li.bbb{
+	background-color: rgb(77, 168, 238)
 }
+
 /*
 a{
 	position: absolute;
@@ -65,51 +69,99 @@ a{
 	line-height: 50px;
 
 }
-input.bbb{
-	width: 100px;
+#banji,#renshu,#saizi{
 	height: 50px;
-	background-color: green;
-	margin-right: 20px;
+	background-color: rgb(123, 127, 131);
 	border-radius: 10px;
 	color: #fff;
-	font-size: 20px;
+	font-size: 25px;
+	width: 200px;
+	margin: auto 50px;
 }
+#banji{
+	position: absolute;
+	top: 0px;
+	left: 20px;
+	widows: 60px;
+}
+#act{
+	display: block;
+	padding-left: 300px;
+}
+
 </style>
 <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <script>
+function getByClass(oParent,sClass){
+	var aResult=[];
+	var aEle=oParent.getElementsByTagName('*');
+
+	for (var i = 0; i < aEle.length; i++) {
+		if(aEle[i].className==sClass){
+			aResult.push(aEle[i]);
+		}
+	}
+	return aResult;
+};
 
 window.onload=function  () {
-	var osh=document.getElementById('search');	
+	var oact=document.getElementById('act');	
 	var osz=document.getElementById('saizi');
 	var oul=document.getElementById('neirong');
-	var oall=document.getElementById('all');	
-	var oselect=document.getElementById('select');
+	var obanji=document.getElementById('banji');	
+	var orenshu=document.getElementById('renshu');
 
 
-
-	osh.onclick=function(){
-		var number_all=parseInt(oall.value);
-		for (var i=0;i<number_all;i++) {
+	obanji.onchange=function(){
+	
+		
+		var text = '{ "ban7" : ["安雪瑞","陈晓宇","程欣","高安新","高骏","高尚","宫文静","关承一","国文智","韩睿语","郝佳","贾朝骞","贾玉熙","焦天乐","李纯坚","李飞萱","李金硕","李蓼泽","李霜","李天舒","李鑫","刘东方","刘伟强","刘真","马新豪","邱令瀚","石智豪","孙佳淇","孙嘉怡","滕凯瑞","王家盛","王璐瑶","王圣杰","王晓钰","王艳茹","吴滢","邢震","杨晓可","杨垚琪","岳媛","张爱霞","张冬梅","张浩艺","张嘉毅","张捷","张小涵","张昕鹏","张新锐","张新月","张滢","赵广军","赵秋燕","赵晓菲","訾鑫宇"],"ban8" :["安龙宇","安梓豪","曹鑫茹","常炳馨","陈心如","陈又新","陈子涵","崔璐璐","杜雨婷","范煜壕","韩霄","侯玉龙","孔文宣","李怀静","刘晨","刘泉顺","刘赛伟","刘新雨","卢艳祯","马佳震","马新奥","孟沐村","牛欣如","彭竟瑶","彭瑞","齐浩昕","钱欣雨","乔万里","秦百怡","史盎然","宋倩茹","宋润泽","孙玉洁","唐家骏","王发展","王宏政","王康","王淑慧","王硕","王馨雨","吴启凡","吴兴魁","徐子捷","叶紫藤","于抒冉","张帆","张骞","张世成","张梓萌","张紫桐","赵芸颢","周梦瑶","周新琦","朱元翔"]}';
+	
+		obj = JSON.parse(text);
+		oul.innerText=""
+		for (var i=0;i<obj[this.value].length;i++) {
 
 			var oli=document.createElement('li');
 		    oul.appendChild(oli);
-		    oli.innerText=i+1
+		    oli.innerText=obj[this.value][i]
+		    oli.className="aaa"
 		}
 		
-		osz.style.display="inline-block";
+		oact.style.display="block";
+
 	}
 
+	// osh.onclick=function(){
+	// 	ban7=
+	// 	ban8=
+
+	// 	// var number_all=parseInt(oall.value);
+	// 	for (var i=0;i<banji.length;i++) {
+
+	// 		var oli=document.createElement('li');
+	// 	    oul.appendChild(oli);
+	// 	    oli.innerText=banji[i]
+	// 	}
+		
+	// 	osz.style.display="inline-block";
+	// }
+
 	osz.onclick = function (argument) {
-		var lis = document.getElementsByTagName("li");
-		for (var i = 0; i < lis.length; i++) {
-			lis[i].classList.remove("aaa")
-		}
-		var count = Number(oselect.value);
+		// var lis = document.getElementsByTagName("li");
+		// for (var i = 0; i < lis.length; i++) {
+		// 	lis[i].classList.remove("aaa")
+		// }
+		var lis = getByClass(oul,"aaa")
+		// var lis =[]
+		// for (var i = 0; i < lis0.length; i++) {
+		// 	lis0[i].classList.remove("aaa")
+		// }
+		var count = Number(orenshu.value);
 		var arr = [];
 		for (var i = 0; i < count; i++) {
 			var flag = false;
-			var index = parseInt(Math.random() * Number(oall.value));
+			var index = parseInt(Math.random() * Number(lis.length));
 			for (var j = 0; j < arr.length; j++) {
 				if (arr[j] == index) {
 					flag = true;
@@ -121,17 +173,40 @@ window.onload=function  () {
 				continue;
 			}
 			arr.push(index);
-			lis[index].className = 'aaa'; 
+			lis[index].classList.remove("aaa")
+			lis[index].className = 'bbb'; 
 		}
+		alert("选到的小朋友们要加油哟～")
 	}
 }
 </script>
 
 </head>
 <body id='body1'>
-	<div id='toubu'><span>总数：</span><input id='all' type="number" value="30"/>
-		<span>选几个：</span><input id='select' type="number" value="6"/>
-		<input id='search' type='button' class='bbb' value="生成"/><input id='saizi'class='bbb' style="display:none;" type='button' value="摇骰子"/>
+	<div id='toubu'>
+		
+		<p>
+			<select id="banji">
+				<option value ="">班级</option>		
+				<option value ="ban7">7班</option>
+				<option value ="ban8">8班</option>
+			</select>
+		</p>
+			<p id="act" style="display:none;" >
+				<select id="renshu">
+					<option value ="5">5</option>
+					<option value ="1">1</option>
+					<option value ="2">2</option>
+					<option value ="3">3</option>
+					<option value ="4">4</option>
+					<option value ="5">5</option>
+					<option value ="6">6</option>
+					<option value ="7">7</option>
+					<option value ="8">8</option>
+					<option value ="9">9</option>
+				</select>
+				<input id='saizi' type='button' value="摇骰子"/>
+			</p>
 	</div>
 	<ul id='neirong'>
 	</ul>
