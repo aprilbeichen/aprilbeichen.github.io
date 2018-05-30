@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset='utf-8'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	position: relative;
+	background: #333;
+}
+ul,li{
+	list-style: none;
+}
+ul{
+	padding-top: 30px;
+	margin-bottom: 50px;
+}
+li{
+	position: relative;
+	display: inline-block;
+	width: 10%;
+	height: 100px;
+	background-color: indianred;
+	border-radius: 10px;
+	color: #fff;
+	margin: 10px;
+	text-align: center;
+	font-size: 30px;
+	line-height: 100px
+}
+li.aaa{
+	background-color: blue
+}
+/*
+a{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: 10px;
+	z-index: 100;
+	color: blue;
+	text-decoration: none;
+
+}
+*/
+
+#toubu{
+	z-index: 100;
+	position: fixed;
+	background: #111;
+	width: 100%;
+	z-index: 1000;
+	color: #d5d5d5
+}
+</style>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script>
+
+window.onload=function  () {
+	var osh=document.getElementById('search');	
+	var osz=document.getElementById('saizi');
+	var oul=document.getElementById('neirong');
+	var oall=document.getElementById('all');	
+	var oselect=document.getElementById('select');
+
+
+
+	osh.onclick=function(){
+		var number_all=parseInt(oall.value);
+		for (var i=0;i<number_all;i++) {
+
+			var oli=document.createElement('li');
+		    oul.appendChild(oli);
+		    oli.innerText=i+1
+		}
+		
+		osz.style.display="inline-block";
+	}
+
+	osz.onclick = function (argument) {
+		var lis = document.getElementsByTagName("li");
+		for (var i = 0; i < lis.length; i++) {
+			lis[i].classList.remove("aaa")
+		}
+		var count = Number(oselect.value);
+		var arr = [];
+		for (var i = 0; i < count; i++) {
+			var flag = false;
+			var index = parseInt(Math.random() * Number(oall.value));
+			for (var j = 0; j < arr.length; j++) {
+				if (arr[j] == index) {
+					flag = true;
+					break;
+				}
+			}
+			if (flag) {
+				i--;
+				continue;
+			}
+			arr.push(index);
+			lis[index].className = 'aaa'; 
+		}
+	}
+}
+</script>
+
+</head>
+<body id='body1'>
+	<div id='toubu'><span>总数：</span><input id='all' type="number" value="30"/>
+		<span>选几个：</span><input id='select' type="number" value="6"/>
+		<input id='search' type='button' value="生成"/><input id='saizi' style="display:none;" type='button' value="摇骰子"/>
+	</div>
+	<ul id='neirong'>
+	</ul>
+
+</body>
+</html>
